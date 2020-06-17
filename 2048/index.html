@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Game-2048</title>
+    <link rel="stylesheet" type ="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type ="text/css" href="./css/modal.css" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" >
+</head>
+    
+<body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+         <span class="close">&times;</span>
+         <p><h1>2048</h1><br>19-year-old Cirulli created the game in a single weekend as a test to see if he could program a game from scratch,
+             "It was a way to pass the time", he said.
+             <br>2048 is played on a 4×4 grid, with numbered tiles that slide smoothly when a player moves them using the <b>four arrow keys.</b>
+             Every turn, a new tile will randomly appear in an empty spot on the board with a value of either 2 or 4.Tiles slide as far as possible in the chosen direction until they are stopped by either another tile or the edge of the grid. If two tiles of the same number collide while moving, 
+             they will merge into a tile with the total value of the two tiles that collided.
+             The resulting tile cannot merge with another tile again in the same move. Higher-scoring tiles emit a darker glow.
+             You will win the game when you reach a tile value of <b>2048</b>.
+             <br>Good Luck.</p>
+        </div>
+  
+  </div>
+    <div id="button-cell">
+		<div class="button-cell">2048</div>
+        <div class="button-cell">Game</div>
+    </div>
+    <a id="newgame"  onclick="setup()">Restart</a>
+    <input class="music" type="button" name="" />
+    <input class="help" type="button" />
+    <div id="score-cell">
+		<div class="score-cell">Score</div>
+        <div class="button-cell"><span id="score">0</span></div>  
+    </div>
+    
+    <audio id="myAudio" src="./music/Sample-1.mp3" preload="auto">
+</audio>
+    <!-- Game Container -->
+    
+    <div class = "gameContainer">
+    <!-- Grid container -->
+        <div class = "gridContainer">
+            <div class = "gridRow">
+                <div class = "element" id = "element-0_0"></div>
+                <div class = "element" id = "element-0_1"></div>
+                <div class = "element" id = "element-0_2"></div>
+                <div class = "element" id = "element-0_3"></div>
+            </div>
+            <div class = "gridRow">
+                <div class = "element" id = "element-1_0"></div>
+                <div class = "element" id = "element-1_1"></div>
+                <div class = "element" id = "element-1_2"></div>
+                <div class = "element" id = "element-1_3"></div>
+            </div>
+            <div class = "gridRow">
+                <div class = "element" id = "element-2_0"></div>
+                <div class = "element" id = "element-2_1"></div>
+                <div class = "element" id = "element-2_2"></div>
+                <div class = "element" id = "element-2_3"></div>
+            </div>
+            <div class = "gridRow">
+                <div class = "element" id = "element-3_0"></div>
+                <div class = "element" id = "element-3_1"></div>
+                <div class = "element" id = "element-3_2"></div>
+                <div class = "element" id = "element-3_3"></div>
+            </div>            
+        </div>
+    </div>
+    <script type="text/javascript" src="./JS/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="./JS/support.js"></script>
+    <script type="text/javascript" src="./JS/Game.js"></script>
+    <script type="text/javascript" src="./JS/Grid.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
