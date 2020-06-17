@@ -14,6 +14,7 @@ window.onclick = function(event) {
 }
 });
 
+
 $(".help").click(function(){
    alert("↑(Upward), ↓(Downward), ←(Left), →(Right) only using this keys you have to reach 2048"); 
 });

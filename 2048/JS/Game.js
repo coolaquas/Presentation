@@ -7,7 +7,7 @@ function blankGrid(){
         [0, 0, 0, 0]
     ];
 }
-var score = 0;
+var score;
 
 function setup() {
     grid = blankGrid();
@@ -44,7 +44,7 @@ for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 4; j++) {
         let x = ("element-" + i +"_"+ j);
         if(grid[i][j] !== 0){
-        document.getElementById("element-" + i +"_"+ j).textContent = grid[i][j];
+        document.getElementById(x).textContent = grid[i][j];
         switch(true){ 
         case(grid[i][j] == 4 || grid[i][j] == 8):
         $(`#${x}`).animate({opacity: "0.75"});
@@ -65,7 +65,7 @@ for (let i = 0; i < 4; i++) {
             $(`#${x}`).animate({opacity: "0.7"});
         }
        } else {
-           document.getElementById("element-" + i +"_"+ j).textContent = " ";
+           document.getElementById(x).textContent = "";
            $(`#${x}`).animate({opacity: "0.4"});
             } 
          }
@@ -88,6 +88,9 @@ function isGameOver(){
             }
             if( grid[i][j] == 2048){
                 alert("Congratulation. \n You have WON the game.")
+                var winSound = new Audio();
+                winSound.src = "./music/Winner.mp3";
+                WinSound.play();
                 return false;
             }
         }
@@ -105,31 +108,34 @@ $("body").keydown(function(e) {
         }
   
   
-        else if(e.keyCode == 39){ //right key
+    else if(e.keyCode == 39){ //right key
           grid = flipGrid(grid);
           flipped = true;
           played = true;
         }
   
-        else if(e.keyCode == 38){ //up key
+    else if(e.keyCode == 38){ //up key
           grid = rotateGrid(grid);
           rotated = true;
           played = true;
         }
-        else if(e.keyCode == 40) { //down key
+    else if(e.keyCode == 40) { //down key
           grid = rotateGrid(grid);
           grid = flipGrid(grid);
           rotated = true;
           flipped = true;
           played = true;
-        } else
+        } 
+    else
         played = false;
   
+
+        
         if(played){
         let past = copyGrid(grid);
          for (i = 0; i < 4; i++) {
-              grid[i] = op(grid[i]);
-              $("#score").text(score);
+                grid[i] = op(grid[i]);
+                $("#score").text(score);
              }
          let change = compare(past,grid);
   
@@ -144,10 +150,16 @@ $("body").keydown(function(e) {
           }
           let gameOver = isGameOver();
           if(gameOver){
+            var lostSound = new Audio();
+            lostSound.src = "./music/Gameover.mp3";
+            lostSound.play();
             alert("No moves left. \n GAME OVER");
           }
           if(change){
-                  addNumber();
+                    addNumber();
+                    var slideSound = new Audio();
+                    slideSound.src = "./music/Sliding.mp3";
+                    slideSound.play();
                   }
           
           disp();

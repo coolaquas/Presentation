@@ -1,3 +1,24 @@
+//function for copy a grid
+function copyGrid(grid){
+    let extra = blankGrid();
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            extra[i][j] = grid[i][j];
+        }
+    } 
+    return extra;
+}
+
+
+//Operate function
+function op(row){
+    row = slide(row);
+    row = combine(row);
+    row = slide(row);
+    return row;
+}
+
+
 //function for sliding
 function slide(row) {
     let arr = row.filter(function(val){
@@ -17,7 +38,6 @@ function slide(row) {
             if(a == b){
                 row[j] = a+b;
                 score = score + row[j];
-                
                 row[j+1] = 0;
             }
         }
@@ -25,24 +45,6 @@ function slide(row) {
 }
     
     
-//Operate function
-function op(row){
-    row = slide(row);
-    row = combine(row);
-    row = slide(row);
-    return row;
-}
-
-//function for copy a grid
-function copyGrid(grid){
-    let extra = blankGrid();
-    for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-            extra[i][j] = grid[i][j];
-        }
-    } 
-    return extra;
-}
 
 // Flip the grid
 function flipGrid(grid){
@@ -68,7 +70,7 @@ function rotateGrid(grid){
 function compare(a,b){
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
-            if (a[i][j] !== b[i][j]){
+            if (a[i][j] !== b[i][j]){    
             return true;
             }
         }
